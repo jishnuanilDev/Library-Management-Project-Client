@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 // If you were using any tailwind or flowbite-related configurations, remove them
 export default defineConfig({
   plugins: [react()],
-
+  base: "/", 
   build: {
     outDir: "dist", 
   },
