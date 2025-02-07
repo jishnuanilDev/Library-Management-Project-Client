@@ -6,7 +6,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: "dist", 
-    assetsDir: "assets", // Organizes assets properly
-    emptyOutDir: true, // Clears the directory before building
   },
 });
