@@ -1,12 +1,9 @@
 {
-  "routes": [
-    { "src": "/(.*)", "dest": "/dist/index.html" }
-  ],
-  "builds": [
+  "rewrites": [
     {
-      "src": "dist/**/*",
-      "use": "@vercel/static"
+      "source": "/(.*)",
+      "destination": "/"
     }
-  ],
-  "outputDirectory": "dist"
+  ]
 }
+
