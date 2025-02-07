@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
-
+import React from "react";
 const ImageUploader: React.FC = () => {
   const [image, setImage] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
