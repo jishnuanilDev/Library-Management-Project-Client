@@ -1,15 +1,5 @@
 {
   "routes": [
-    { "src": "/(.*)", "dest": "/dist/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    }
+    { "src": "/(.*)", "dest": "/" }
   ]
-} 
-
-
+}
