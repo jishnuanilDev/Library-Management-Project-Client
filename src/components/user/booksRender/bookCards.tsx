@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import BookListCard from "../cards/bookListCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +22,16 @@ const [update,setUpdate] = useState(false);
 
     fetchBooks();
   }, [dispatch,update]);
+
+   const searchQuery = useSelector((state: any) => state.search.query);
+  
+    const filteredBooks = searchQuery
+      ? books.filter(
+          (book) =>
+            book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            book.author.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      : books; // If no search query, show all books
   return (
     <>
     
@@ -50,14 +60,29 @@ const [update,setUpdate] = useState(false);
         backgroundRepeat: "no-repeat",
       }}
       >
-        {books?.map((book, index) => (
-            <>
-              <BookListCard key={index} setUpdate={setUpdate} book={book} />
-      
-            </>
-        
-          
-        ))}
+        {filteredBooks.length > 0 ? (
+      filteredBooks.map((book,index) => (
+        <BookListCard key={index} setUpdate={setUpdate} book={book} />
+      ))
+    ) : (
+<Box
+  display="flex"
+  justifyContent="center"
+  alignItems="center"
+  height="50vh"
+  width="100%"
+>
+  <Typography 
+    variant="h6" 
+    color="textSecondary" 
+    fontWeight="bold"
+    textAlign="center"
+    sx={{ml:77, whiteSpace: "nowrap" }} // Prevents text from wrapping
+  >
+    📚 No books found
+  </Typography>
+</Box>
+    )}
       </Box>
     </Box>
     </>
